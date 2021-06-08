@@ -40,14 +40,15 @@ public class IndicadorServiceImpl implements IIndicadorService {
 			indicador = Mapper.map(indicadorDto, Indicador.class);
 			indicador.setFecha(fecha);
 			
-			if(indicadorDto != null) {
+			if(indicadorDto != null && !indicadorDto.getSerie().isEmpty()) {
 				indicadorRepository.save(indicador);
 				SerieDto serieDto = new SerieDto();
 				serieDto.setIndicador_rel(indicador.getIdIndicador());
 				serieDto.setFecha(fecha);
 				serieDto.setValor(indicadorDto.getSerie().get(0).getValor());
 				serieService.save(serieDto);
-			}
+			} else 
+				return null;
 				
 			return indicadorDto;
 		}

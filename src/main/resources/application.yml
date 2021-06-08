@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: api_mindicador
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/bicemindicador
+    username: postgres
+    password: 4dm1n
+    driver-class-name: org.postgresql.Driver
+server:
+  servlet: 
+    context-path: /api-mindicador/v1
+api:
+   url_base: https://mindicador.cl/api    
+      
